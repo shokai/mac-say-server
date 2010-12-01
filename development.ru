@@ -5,6 +5,8 @@ require 'rack'
 require 'sinatra/static_assets'
 require 'sinatra/content_for'
 require 'sinatra/reloader'
+require 'yaml'
+require 'MeCab'
 require File.dirname(__FILE__)+'/main'
 
 set :environment, :development
