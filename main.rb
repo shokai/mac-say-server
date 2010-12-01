@@ -19,9 +19,13 @@ end
 
 get '/' do
 <<EOS
+<h1>say server</h1>
 <form method="post" action="#{app_root}/say" id="say">
-<input type="text" name="message"> <input type="submit" name="say" value="say">
+<input type="text" name="message" size="60"> <input type="submit" name="say" value="say">
 </form>
+<h2>API</h2>
+HTTP-POST #{app_root}/say<br />
+post parameter "message"
 EOS
 end
 
