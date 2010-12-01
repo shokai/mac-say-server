@@ -34,7 +34,7 @@ post '/say' do
   m = m.gsub(/[`"'\r\n;]/, '').chomp.strip
   puts m
   puts cmd = "#{@@conf['saykana']} '#{m}'"
-  system cmd
+  puts `#{cmd}`
   redirect '/'
 end
 
