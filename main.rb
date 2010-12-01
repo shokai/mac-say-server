@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-require 'yaml'
-
 begin
   @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
   p @@conf
@@ -10,8 +8,7 @@ rescue => e
   STDERR.puts e
 end
 
-
-@@saykana = 
+@@mecab = MeCab::Tagger.new('-Ochasen')
 
 def app_root
   "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{env['SCRIPT_NAME']}"
@@ -33,6 +30,11 @@ post '/say' do
   m = params['message']
   m = m.gsub(/[`"'\r\n;]/, '').chomp.strip
   puts m
+  puts m = @@mecab.parse(m).map{|i|
+    i.split(/\t/)[1]
+  }.delete_if{|i|
+    i.to_s.size < 1
+  }.join('')
   puts cmd = "#{@@conf['saykana']} '#{m}'"
   puts `#{cmd}`
   redirect '/'
