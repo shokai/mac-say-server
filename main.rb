@@ -37,9 +37,9 @@ post '/say' do
   }.join('')
   puts cmd = "#{@@conf['saykana']} '#{m}'"
   puts `#{cmd}`
-  redirect app_root
+  redirect app_root+'/'
 end
 
 get '/say' do
-  redirect app_root
+  redirect app_root+'/'
 end
