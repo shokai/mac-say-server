@@ -41,5 +41,5 @@ post '/say' do
 end
 
 get '/say' do
-  redirect '/'
+  redirect app_root
 end
