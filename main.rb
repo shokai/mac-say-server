@@ -34,9 +34,11 @@ post '/say' do
     i.split(/\t/)[1]
   }.delete_if{|i|
     i.to_s.size < 1
-  }.join('')
-  puts cmd = "#{@@conf['saykana']} '#{m}'"
-  puts `#{cmd}`
+  }.join('').chomp.strip
+  if m.size > 0
+    puts cmd = "#{@@conf['saykana']} '#{m}'"
+    puts `#{cmd}`
+  end
   redirect app_root+'/'
 end
 
