@@ -9,15 +9,16 @@ get '/' do
   haml :index
 end
 
+get '/say/*' do
+  m = params[:splat].first
+  m.to_kana
+end
+
 post '/say' do
   m = params['message'].gsub(/[`"'\r\n;]/, '').strip.to_kana
   if m.size > 0
     puts cmd = "#{@@conf['saykana']} '#{m}'"
     `#{cmd}`
   end
-  redirect app_root+'/'
-end
-
-get '/say' do
   redirect app_root+'/'
 end
