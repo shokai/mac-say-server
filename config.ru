@@ -1,11 +1,7 @@
 require 'rubygems'
-require 'bundler/setup'
-require 'sinatra'
-require 'sinatra/static_assets'
-require 'sinatra/content_for'
 require 'rack'
-require 'yaml'
-require 'MeCab'
+require 'sinatra'
+require File.dirname(__FILE__)+'/helper'
 require File.dirname(__FILE__)+'/main'
 
 set :environemt, :production
