@@ -10,13 +10,7 @@ get '/' do
 end
 
 post '/say' do
-  m = params['message']
-  m = m.gsub(/[`"'\r\n;]/, '').strip
-  m = @@mecab.parse(m).map{|i|
-    i.split(/\t/)[1]
-  }.delete_if{|i|
-    i.to_s.size < 1
-  }.join('').strip
+  m = params['message'].gsub(/[`"'\r\n;]/, '').strip.to_kana
   if m.size > 0
     puts cmd = "#{@@conf['saykana']} '#{m}'"
     `#{cmd}`
