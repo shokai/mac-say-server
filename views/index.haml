@@ -1,0 +1,18 @@
+!!! XML
+%html
+  %head
+    %title= @title
+  %body
+    %h1= @title
+    %div
+      %form{:method => 'post', :action => "#{app_root}/say"}
+        %input{:type => 'text', :name => 'message', :size => 60}
+        %input{:type => 'submit', :name => 'say', :value => 'say'}
+    %div
+      %h2 API
+      %ul
+        %li HTTP-POST #{app_root}/say
+        %li post parameter "message"
+      
+
+      
