@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-
 before do
   @title = 'Mac Say Server'
 end
@@ -12,12 +11,12 @@ end
 
 post '/say' do
   m = params['message']
-  m = m.gsub(/[`"'\r\n;]/, '').chomp.strip
+  m = m.gsub(/[`"'\r\n;]/, '').strip
   m = @@mecab.parse(m).map{|i|
     i.split(/\t/)[1]
   }.delete_if{|i|
     i.to_s.size < 1
-  }.join('').chomp.strip
+  }.join('').strip
   if m.size > 0
     puts cmd = "#{@@conf['saykana']} '#{m}'"
     `#{cmd}`
