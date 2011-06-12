@@ -7,7 +7,8 @@ Dependencies
 ------------
 
 * Mac OSX
-* sinatra
+* Sinatra
+* MeCab
 * [saykana](http://www.a-quest.com/quickware/saykana/)
 
 
@@ -23,7 +24,7 @@ then, edit it.
 
 Install Dependencies
 
-    % sudo gem install bundler
+    % gem install bundler
     % bundle install
 
 
