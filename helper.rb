@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'MeCab'
+require 'igo-ruby'
 require 'yaml'
 require 'haml'
 
@@ -13,7 +13,7 @@ rescue => e
 end
 
 begin
-  @@mecab = MeCab::Tagger.new('-Ochasen')
+  @@igo = Igo::Tagger.new(File.dirname(__FILE__)+'/ipadic')
 rescue => e
   STDERR.puts 'mecab error'
   STDERR.puts e
@@ -26,10 +26,15 @@ end
 
 class String
   def to_kana
-    @@mecab.parse(self).map{|i|
-      i.split(/\t/)[1]
-    }.delete_if{|i|
-      i.to_s.size < 1
-    }.join('').strip
+    begin
+      return @@igo.parse(self.strip).map{|i|
+        kana = i.feature.split(',')[-2].to_s
+        kana = i.surface.to_s if kana == nil or kana == '*'
+        kana
+      }.join('').strip
+    rescue => e
+      STDERR.puts e
+      return ''
+    end
   end
 end
