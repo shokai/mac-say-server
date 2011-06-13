@@ -8,7 +8,6 @@ Dependencies
 
 * Mac OSX
 * Sinatra
-* MeCab
 * [saykana](http://www.a-quest.com/quickware/saykana/)
 
 
