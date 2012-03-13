@@ -11,23 +11,32 @@ Dependencies
 * /usr/bin/say
 * [saykana](http://www.a-quest.com/quickware/saykana/)
 
-Run Server
-----------
-
-config
-
-    % cp sample.config.yaml config.yaml
-
-then, edit it.
+http://gyazo.com/e330ddc7614dffbdf2ddd29e4917987d
 
 
 Install Dependencies
+--------------------
 
     % gem install bundler
     % bundle install
 
 
-run
+Say setting
+-----------
+[System Preferences]->[Speech]
+<img src="http://gyazo.com/e330ddc7614dffbdf2ddd29e4917987d.png">
+
+
+Setup
+-----
+
+    % cp sample.config.yaml config.yaml
+
+edit it.
+
+
+Run
+---
 
     % ruby development.rb
 
