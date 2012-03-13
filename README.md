@@ -11,8 +11,6 @@ Dependencies
 * /usr/bin/say
 * [saykana](http://www.a-quest.com/quickware/saykana/)
 
-http://gyazo.com/e330ddc7614dffbdf2ddd29e4917987d
-
 
 Install Dependencies
 --------------------
