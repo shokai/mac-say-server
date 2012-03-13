@@ -21,4 +21,5 @@
         %li post parameter "message"
         %li % curl -d 'message=こんにちは' #{app_root}/saykana
     %hr
-      %a{:href => 'https://github.com/shokai/mac-say-server'} github.com/shokai/mac-say-server
+      - @uri = 'https://github.com/shokai/mac-say-server'
+      %a{:href => @uri}= @uri
