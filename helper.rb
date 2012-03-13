@@ -25,6 +25,10 @@ def app_root
 end
 
 class String
+  def escape_cmd
+    self.gsub(/[`"'\r\n;]/, '')
+  end
+
   def to_kana
     begin
       return @@igo.parse(self.strip).map{|i|

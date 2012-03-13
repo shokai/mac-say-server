@@ -5,13 +5,20 @@
   %body
     %h1= @title
     %div
+      %h2 say
       %form{:method => 'post', :action => "#{app_root}/say"}
+        %input{:type => 'text', :name => 'message', :size => 60}
+        %input{:type => 'submit', :name => 'say', :value => 'say'}
+    %div
+      %h2 saykana
+      %form{:method => 'post', :action => "#{app_root}/saykana"}
         %input{:type => 'text', :name => 'message', :size => 60}
         %input{:type => 'submit', :name => 'say', :value => 'say'}
     %div
       %h2 API
       %ul
-        %li HTTP-POST #{app_root}/say
+        %li HTTP-POST #{app_root}/say or #{app_root}/saykana
         %li post parameter "message"
+        %li % curl -d 'message=こんにちは' #{app_root}/saykana
     %hr
       %a{:href => 'https://github.com/shokai/mac-say-server'} github.com/shokai/mac-say-server

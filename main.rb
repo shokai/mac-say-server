@@ -1,6 +1,3 @@
-#!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
-
 before do
   @title = 'Mac Say Server'
 end
@@ -10,10 +7,29 @@ get '/' do
 end
 
 post '/say' do
-  m = params['message'].gsub(/[`"'\r\n;]/, '').strip.to_kana
-  if m.size > 0
-    puts cmd = "#{@@conf['saykana']} '#{m}'"
-    `#{cmd}`
+  begin
+    m = params['message'].strip.escape_cmd
+    if m.size > 0
+      puts cmd = "say '#{m}'"
+      system cmd
+    end
+    redirect app_root
+  rescue
+    status 400
+    @mes = 'post parameter "message" is missing'
   end
-  redirect app_root+'/'
+end
+
+post '/saykana' do
+  begin
+    m = params['message'].strip.escape_cmd.to_kana
+    if m.size > 0
+      puts cmd = "#{@@conf['saykana']} '#{m}'"
+      system cmd
+    end
+    redirect app_root
+  rescue
+    status 400
+    @mes = 'post parameter "message" is missing'
+  end
 end
